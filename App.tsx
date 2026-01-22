@@ -1,12 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Counter App</Text>
-      <Text style={styles.subtitle}>React Native + Expo + TypeScript</Text>
+      <Text style={styles.counterText}>{count}</Text>
+      <Pressable onPress={() => setCount(count + 1)}>
+        <View style={styles.button} />
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
@@ -19,13 +23,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    fontSize: 24,
+  counterText: {
+    fontSize: 80,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 20,
   },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
+  button: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: 'red',
   },
 });
